@@ -1,13 +1,13 @@
 import './App.css';
 import Header from "./components/Header";
-import FrontPage from "./components/FrontPage";
+import Main from "./components/Main";
 import Footer from "./components/Footer";
 
-function App() {
+const App = () => {
   return (
     <div className="app">
         <Header/>
-        <FrontPage/>
+        <Main/>
         <Footer/>
     </div>
   );
