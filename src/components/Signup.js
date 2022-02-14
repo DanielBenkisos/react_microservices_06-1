@@ -1,9 +1,11 @@
 import {useState} from "react";
+import {Navigate} from "react-router-dom";
 
 const Signup = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [success, setSuccess] = useState(false);
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -30,6 +32,9 @@ const Signup = () => {
                 },
                 body: JSON.stringify(payload),
             });
+        if (response.ok) {
+            setSuccess(() => true);
+        }
     }
 
     return (
@@ -49,6 +54,7 @@ const Signup = () => {
                        placeholder="Enter a password"/><br/><br/>
                 <button>Submit</button>
             </form>
+            {success && <Navigate to="/login"/>}
         </div>
     );
 };
