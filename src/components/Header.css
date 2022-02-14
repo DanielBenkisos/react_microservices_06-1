@@ -1,0 +1,9 @@
+.header {
+    grid-area: header;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    padding: 10px;
+}

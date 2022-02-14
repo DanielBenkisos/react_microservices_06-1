@@ -1,6 +1,8 @@
+import "./FrontPage.css"
+
 const FrontPage = () => {
     return (
-        <div>
+        <div className={"frontPage"}>
             <h1>Welcome</h1>
         </div>
     );

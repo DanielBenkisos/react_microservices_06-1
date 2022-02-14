@@ -1,6 +1,8 @@
+import "./Header.css"
+
 const Header = () => {
     return (
-        <div>
+        <div className="header">
             <div>Logo</div>
             <div>About</div>
             <a href="#">Login</a>
