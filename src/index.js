@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
+import Store from "./components/Store";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.render(
                 <Route path="/" element={<App/>}>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/signup" element={<SignUp/>}/>
+                    <Route path="/store" element={<Store/>}/>
                 </Route>
                 <Route
                     path="*"

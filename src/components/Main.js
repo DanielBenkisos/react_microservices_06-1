@@ -1,10 +1,10 @@
 import "./Main.css";
 import {Outlet} from "react-router-dom";
 
-const Main = () => {
+const Main = ({ isLoggedIn, handleLogin }) => {
     return (
         <div className={"main"}>
-            <Outlet/>
+            <Outlet context={{ isLoggedIn, handleLogin }}/>
         </div>
     );
 };
