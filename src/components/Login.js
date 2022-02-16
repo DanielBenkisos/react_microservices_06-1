@@ -28,6 +28,7 @@ const Login = () => {
                     "Content-type": "application/json",
                     "Accept": "application/json",
                 },
+                credentials: "include",
                 body: JSON.stringify(payload),
             });
         if (response.ok) {

@@ -1,5 +1,7 @@
 import {useState} from "react";
 import {Navigate} from "react-router-dom";
+import {DOMAIN, BACKEND_PORT} from "../config";
+import {post} from "../api-crud";
 
 const Signup = () => {
     const [username, setUsername] = useState("");
@@ -21,19 +23,14 @@ const Signup = () => {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const url = "http://localhost:8087/signup";
         const payload = { username, email, password };
-        const response = await fetch(url,
-            {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                    "Accept": "application/json",
-                },
-                body: JSON.stringify(payload),
-            });
-        if (response.ok) {
-            setSuccess(() => true);
+        try {
+            const response = await post(DOMAIN, BACKEND_PORT, "signup", false, payload);
+            if (response.ok) {
+                setSuccess(() => true);
+            }
+        } catch (error) {
+            console.error(error);
         }
     }
 
