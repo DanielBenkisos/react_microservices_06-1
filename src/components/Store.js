@@ -1,9 +1,9 @@
 import {useOutletContext} from "react-router-dom";
 
 const Store = () => {
-    const { isLoggedIn, handleLogin } = useOutletContext();
+    const { authorized, handleLogin } = useOutletContext();
 
-    if (!isLoggedIn) {
+    if (!authorized) {
         return <div>
             <h1>Please login to access this page.</h1>
         </div>

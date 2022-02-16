@@ -7,27 +7,34 @@ import {get} from "./api-crud";
 import {DOMAIN, BACKEND_PORT} from "./config";
 
 const App = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [authorized, setAuthorized] = useState(false);
 
     useEffect(async () => {
+        handleLogin(await isAuthorized())
+    }, []);
+
+    async function isAuthorized() {
+        let authorized = false;
         try {
             const json = await get(DOMAIN, BACKEND_PORT, "login", true);
             if (json.status === "loggedIn") {
-                handleLogin(true);
+                authorized = true
             }
         } catch (error) {
             console.error(error);
         }
-    }, []);
+        return authorized;
+    }
+
 
     function handleLogin(value) {
-        setIsLoggedIn(value);
+        setAuthorized(value);
     }
 
     return (
         <div className="app">
-            <Header isLoggedIn={isLoggedIn} handleLogin={handleLogin}/>
-            <Main isLoggedIn={isLoggedIn} handleLogin={handleLogin}/>
+            <Header authorized={authorized} handleLogin={handleLogin}/>
+            <Main authorized={authorized} handleLogin={handleLogin}/>
             <Footer/>
         </div>
     );

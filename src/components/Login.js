@@ -2,10 +2,9 @@ import {useState} from "react";
 import {useOutletContext, Navigate} from "react-router-dom";
 
 const Login = () => {
-    const { isLoggedIn, handleLogin } = useOutletContext();
+    const { authorized, handleLogin } = useOutletContext();
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
-    const [success, setSuccess] = useState(false);
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -49,7 +48,7 @@ const Login = () => {
                        placeholder="Enter password"/><br/><br/>
                 <button>Log In</button>
             </form>
-            {isLoggedIn && <Navigate to="/store"/>}
+            {authorized && <Navigate to="/store"/>}
         </div>
     );
 };
