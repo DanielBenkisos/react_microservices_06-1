@@ -1,5 +1,7 @@
 import {useState} from "react";
 import {useOutletContext, Navigate} from "react-router-dom";
+import {post} from "../api-crud";
+import {BACKEND_PORT, DOMAIN} from "../config";
 
 const Login = () => {
     const { authorized, handleLogin } = useOutletContext();
@@ -18,20 +20,15 @@ const Login = () => {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const url = "http://localhost:8087/login";
-        const payload = { credential, password };
-        const response = await fetch(url,
-            {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                    "Accept": "application/json",
-                },
-                credentials: "include",
-                body: JSON.stringify(payload),
-            });
-        if (response.ok) {
-            handleLogin(true);
+        try {
+            const payload = { credential, password };
+            const response = await post(DOMAIN, BACKEND_PORT, "login", true, payload);
+
+            if (response.ok) {
+                handleLogin(true);
+            }
+        } catch (error) {
+            console.error(error);
         }
     }
 

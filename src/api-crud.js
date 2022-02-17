@@ -2,22 +2,22 @@ export const post = async (domain, port, path, credentials, payload) => {
     const url = `http://${domain}:${port}/${path}`;
     const response = await fetch(url, {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         credentials: credentials ? "include" : "omit",
         body: JSON.stringify(payload),
     });
     if (!response.ok) {
         throw new Error(response.status.toString());
-    }
-    if (response.status === 204) {
+    } else if (response.status === 204) {
         return response;
+    } else {
+        return await response.json();
     }
-    return await response.json();
 };
 
 export const get = async (domain, port, path, credentials) => {
     const url = `http://${domain}:${port}/${path}`;
-    const response = await fetch(url, {credentials: credentials ? "include" : "omit"});
+    const response = await fetch(url, { credentials: credentials ? "include" : "omit" });
     if (!response.ok) {
         throw new Error(response.status.toString());
     }
@@ -29,7 +29,7 @@ export const put = async (domain, port, path, credentials, payload) => {
     const response = await fetch(url, {
         method: "PUT",
         body: JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         credentials: credentials && "include",
     });
     if (!response.ok) {
