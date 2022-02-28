@@ -25,7 +25,7 @@ const Signup = () => {
         event.preventDefault();
         const payload = { username, email, password };
         try {
-            const response = await post(DOMAIN, BACKEND_PORT, "signup", false, payload);
+            const response = await post(DOMAIN, BACKEND_PORT, "authentication/signup", false, payload);
             if (response.ok) {
                 setSuccess(() => true);
             }
