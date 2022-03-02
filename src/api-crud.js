@@ -8,10 +8,8 @@ export const post = async (domain, port, path, credentials, payload) => {
     });
     if (!response.ok) {
         throw new Error(response.status.toString());
-    } else if (response.status === 204) {
-        return response;
     } else {
-        return await response.json();
+        return response;
     }
 };
 
