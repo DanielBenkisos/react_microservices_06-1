@@ -5,11 +5,14 @@ import {BACKEND_PORT, DOMAIN} from "../config";
 
 const Header = ({ authorized, handleLogin }) => {
 
-    const handleLogout = async () => {
+    const handleLogout = async (e) => {
+        e.preventDefault();
         const response = await get(DOMAIN, BACKEND_PORT, "authentication/logout", true, null);
         if (response.ok) {
             handleLogin(false);
         }
+        const json = await response.json();
+        console.log(json);
     };
 
     return (
