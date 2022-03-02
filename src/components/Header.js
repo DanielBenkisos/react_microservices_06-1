@@ -1,15 +1,16 @@
 import "./Header.css";
 import {Link} from "react-router-dom";
+import {get} from "../api-crud";
+import {BACKEND_PORT, DOMAIN} from "../config";
 
 const Header = ({ authorized, handleLogin }) => {
 
     const handleLogout = async () => {
-            const url = "http://localhost:8087/logout";
-            const response = await fetch(url, {credentials: "include"});
-            if (response.ok) {
-                handleLogin(false)
-            }
-    }
+        const response = await get(DOMAIN, BACKEND_PORT, "authentication/logout", true, null);
+        if (response.ok) {
+            handleLogin(false);
+        }
+    };
 
     return (
         <div className="header">
