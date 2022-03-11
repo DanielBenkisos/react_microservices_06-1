@@ -4,7 +4,7 @@ import {post} from "../api-crud";
 import {BACKEND_PORT, DOMAIN} from "../config";
 
 const Login = () => {
-    const { authorized, handleLogin } = useOutletContext();
+    const { loggedIn, handleLogin } = useOutletContext();
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
 
@@ -45,7 +45,7 @@ const Login = () => {
                        placeholder="Enter password"/><br/><br/>
                 <button>Log In</button>
             </form>
-            {authorized && <Navigate to="/store"/>}
+            {loggedIn && <Navigate to="/store"/>}
         </div>
     );
 };

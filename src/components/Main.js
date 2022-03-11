@@ -1,10 +1,10 @@
 import "./Main.css";
 import {Outlet} from "react-router-dom";
 
-const Main = ({ authorized, handleLogin }) => {
+const Main = ({ loggedIn, handleLogin }) => {
     return (
         <div className={"main"}>
-            <Outlet context={{ authorized, handleLogin }}/>
+            <Outlet context={{ loggedIn, handleLogin }}/>
         </div>
     );
 };

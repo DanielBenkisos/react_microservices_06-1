@@ -15,7 +15,10 @@ export const post = async (domain, port, path, credentials, payload) => {
 
 export const get = async (domain, port, path, credentials) => {
     const url = `http://${domain}:${port}/${path}`;
-    const response = await fetch(url, { credentials: credentials ? "include" : "omit" });
+    const response = await fetch(url, {
+        method: "GET",
+        credentials: "include"
+    });
     if (!response.ok) {
         throw new Error(response.status.toString());
     }
