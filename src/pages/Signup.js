@@ -4,7 +4,7 @@ import {DOMAIN, BACKEND_PORT} from "../config";
 import {post} from "../api-crud";
 
 const Signup = () => {
-    const [username, setUsername] = useState("");
+    const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
@@ -12,8 +12,8 @@ const Signup = () => {
     function handleChange(event) {
         const { name, value } = event.target;
 
-        if (name === "username") {
-            setUsername(value);
+        if (name === "userName") {
+            setUserName(value);
         } else if (name === "email") {
             setEmail(value);
         } else if (name === "password") {
@@ -23,9 +23,9 @@ const Signup = () => {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const payload = { username, email, password };
+        const payload = { userName, email, password };
         try {
-            const response = await post(DOMAIN, BACKEND_PORT, "authentication/signup", false, payload);
+            const response = await post(DOMAIN, BACKEND_PORT, "/signup", false, payload);
             if (response.ok) {
                 setSuccess(() => true);
             }
@@ -38,8 +38,8 @@ const Signup = () => {
         <div>
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label><br/>
-                <input value={username} onChange={handleChange} id="username" name="username" type="text"
+                <label htmlFor="userName">UserName</label><br/>
+                <input value={userName} onChange={handleChange} id="userName" name="userName" type="text"
                        placeholder="Enter an username"/><br/><br/>
 
                 <label htmlFor="email">E-mail</label><br/>

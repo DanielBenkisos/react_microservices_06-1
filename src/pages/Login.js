@@ -22,7 +22,7 @@ const Login = () => {
         event.preventDefault();
         try {
             const payload = { credential, password };
-            const response = await post(DOMAIN, BACKEND_PORT, "authentication/login", true, payload);
+            const response = await post(DOMAIN, BACKEND_PORT, "/login", true, payload);
 
             if (response.ok) {
                 handleLogin(true);
