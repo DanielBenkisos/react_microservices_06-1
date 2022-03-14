@@ -16,8 +16,9 @@ const App = () => {
     async function isLoggedIn() {
         let loggedIn = false;
         try {
-            const json = await get(DOMAIN, BACKEND_PORT, "authentication/login", true).json();
-            loggedIn = json.loggedIn;
+            const response = await get(DOMAIN, BACKEND_PORT, "authentication/login", true);
+            let object = await response.json();
+            loggedIn = object.loggedIn;
         } catch (error) {
             console.error(error);
         }
