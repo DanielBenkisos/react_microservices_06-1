@@ -4,6 +4,11 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
-    background-color: gray;
+    background-color: black;
     padding: 10px;
+}
+
+.nav-item{
+    display: flex;
+    color: aqua;
 }

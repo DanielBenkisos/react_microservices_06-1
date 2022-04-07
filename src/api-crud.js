@@ -22,7 +22,7 @@ export const get = async (domain, port, path, credentials) => {
     if (!response.ok) {
         throw new Error(response.status.toString());
     }
-    return response;
+    return await response.json();
 };
 
 export const put = async (domain, port, path, credentials, payload) => {
@@ -36,7 +36,7 @@ export const put = async (domain, port, path, credentials, payload) => {
     if (!response.ok) {
         throw new Error(response.status.toString());
     }
-    return response;
+    return await response.json();
 };
 
 export const deLete = async (domain, port, path, credentials) => {

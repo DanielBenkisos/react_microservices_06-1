@@ -6,6 +6,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
 import Store from "./pages/Store";
+import Profile from "./pages/Profile";
+import About from "./pages/About";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -15,15 +17,9 @@ ReactDOM.render(
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/signup" element={<SignUp/>}/>
                     <Route path="/store" element={<Store/>}/>
+                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/about" element={<About/>}/>
                 </Route>
-                <Route
-                    path="*"
-                    element={
-                        <main style={{ padding: "1rem" }}>
-                            <p>There's nothing here!</p>
-                        </main>
-                    }
-                />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>,

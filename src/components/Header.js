@@ -1,4 +1,5 @@
 import "./Header.css";
+import image from "../logo.svg"
 import {Link} from "react-router-dom";
 import {get} from "../api-crud";
 import {BACKEND_PORT, DOMAIN} from "../config";
@@ -7,21 +8,21 @@ const Header = ({ loggedIn, handleLogin }) => {
 
     const handleLogout = async (e) => {
         e.preventDefault();
-        const response = await get(DOMAIN, BACKEND_PORT, "authentication/logout", true);
-        if (response.ok) {
+        const json = await get(DOMAIN, BACKEND_PORT, "/logout", true);
+
             handleLogin(false);
-        }
-        const json = await response.json();
+
         console.log(json);
     };
 
     return (
         <div className="header">
-            <Link to="/">Logo</Link>
-            <Link to="/about">About</Link>
-            {!loggedIn && <Link to="/login">Login</Link>}
-            <Link to="/signup">Sign Up</Link>
-            {loggedIn && <a href="/" onClick={handleLogout}>Logout</a>}
+            <img src={image} height={100} width={100}/>
+            <Link to="/about" className={'nav-item'}>About</Link>
+            {!loggedIn && <Link to="/login" className={'nav-item'}>Login</Link>}
+            {!loggedIn && <Link to="/signup" className={'nav-item'}>Sign Up</Link>}
+            {loggedIn && <a href="/" onClick={handleLogout} className={'nav-item'}  >Logout</a>}
+            {loggedIn && <Link to="/profile" className={'nav-item'}>Profile</Link>}
         </div>
     );
 };
