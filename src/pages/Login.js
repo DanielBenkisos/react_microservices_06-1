@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useOutletContext, Navigate} from "react-router-dom";
 import {post} from "../api-crud";
-import {BACKEND_PORT, DOMAIN} from "../config";
+import {BACKEND_USER_PORT, DOMAIN} from "../config";
 
 const Login = () => {
     const { loggedIn, handleLogin } = useOutletContext();
@@ -22,7 +22,7 @@ const Login = () => {
         event.preventDefault();
         try {
             const payload = { credential, password };
-            const response = await post(DOMAIN, BACKEND_PORT, "/login", true, payload);
+            const response = await post(DOMAIN, BACKEND_USER_PORT, "/login", true, payload);
 
             if (response.ok) {
                 handleLogin(true);

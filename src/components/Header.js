@@ -2,13 +2,13 @@ import "./Header.css";
 import image from "../logo.svg"
 import {Link} from "react-router-dom";
 import {get} from "../api-crud";
-import {BACKEND_PORT, DOMAIN} from "../config";
+import {BACKEND_USER_PORT, DOMAIN} from "../config";
 
 const Header = ({ loggedIn, handleLogin }) => {
 
     const handleLogout = async (e) => {
         e.preventDefault();
-        const json = await get(DOMAIN, BACKEND_PORT, "/logout", true);
+        const json = await get(DOMAIN, BACKEND_USER_PORT, "/logout", true);
 
             handleLogin(false);
 

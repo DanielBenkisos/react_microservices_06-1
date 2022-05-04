@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Navigate} from "react-router-dom";
-import {DOMAIN, BACKEND_PORT} from "../config";
+import {DOMAIN, BACKEND_USER_PORT} from "../config";
 import {post} from "../api-crud";
 
 const Signup = () => {
@@ -25,7 +25,7 @@ const Signup = () => {
         event.preventDefault();
         const payload = { userName, email, password };
         try {
-            const response = await post(DOMAIN, BACKEND_PORT, "/signup", false, payload);
+            const response = await post(DOMAIN, BACKEND_USER_PORT, "/signup", false, payload);
             if (response.ok) {
                 setSuccess(() => true);
             }

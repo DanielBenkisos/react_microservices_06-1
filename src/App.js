@@ -4,7 +4,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import {useEffect, useState} from "react";
 import {get} from "./api-crud";
-import {BACKEND_PORT, DOMAIN} from "./config";
+import {BACKEND_USER_PORT, DOMAIN} from "./config";
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -16,7 +16,7 @@ const App = () => {
     async function isLoggedIn() {
         let loggedIn = false;
         try {
-            const json = await get(DOMAIN, BACKEND_PORT, "/login", true);
+            const json = await get(DOMAIN, BACKEND_USER_PORT, "/login", true);
             loggedIn = json.loggedIn;
         } catch (error) {
             console.error(error);

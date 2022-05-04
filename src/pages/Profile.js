@@ -2,7 +2,7 @@ import {useOutletContext} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {get} from "../api-crud";
 import {put} from "../api-crud";
-import {BACKEND_PORT, DOMAIN} from "../config";
+import {BACKEND_USER_PORT, DOMAIN} from "../config";
 
 const Profile = () => {
     const { loggedIn, handleLogin } = useOutletContext();
@@ -24,7 +24,7 @@ const Profile = () => {
 
    async function handleLoad(){
         try{
-            const json = await get(DOMAIN, BACKEND_PORT, "/profile", true);
+            const json = await get(DOMAIN, BACKEND_USER_PORT, "/profile", true);
 
                 setProfile(json);
 
@@ -37,7 +37,7 @@ const Profile = () => {
         event.preventDefault();
         try {
             const payload = profile;
-            const json = await put(DOMAIN, BACKEND_PORT, "/profile", true, payload);
+            const json = await put(DOMAIN, BACKEND_USER_PORT, "/profile", true, payload);
 
             setProfile(json);
 
