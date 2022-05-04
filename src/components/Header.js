@@ -23,6 +23,7 @@ const Header = ({ loggedIn, handleLogin }) => {
             {!loggedIn && <Link to="/signup" className={'nav-item'}>Sign Up</Link>}
             {loggedIn && <a href="/" onClick={handleLogout} className={'nav-item'}  >Logout</a>}
             {loggedIn && <Link to="/profile" className={'nav-item'}>Profile</Link>}
+            <Link to="/advertisements" className={'nav-item'}>Advertisements</Link>
         </div>
     );
 };

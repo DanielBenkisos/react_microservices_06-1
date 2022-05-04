@@ -1,0 +1,9 @@
+.category{
+    height: 30px;
+    width: 100px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+}

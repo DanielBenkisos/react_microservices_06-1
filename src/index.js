@@ -8,6 +8,8 @@ import SignUp from "./pages/Signup";
 import Store from "./pages/Store";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
+import Advertisements from "./pages/Advertisements";
+import Category from "./components/Category";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -19,6 +21,7 @@ ReactDOM.render(
                     <Route path="/store" element={<Store/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/about" element={<About/>}/>
+                    <Route path="/advertisements" element={<Advertisements/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
